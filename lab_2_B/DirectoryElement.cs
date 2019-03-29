@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab_2_B
+namespace miniTCApp
 {
     public enum DirectoryElementType { DIRECTORY, FILE };
 

@@ -8,25 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace lab_2_B
+namespace miniTCApp
 {
-    public partial class MiniTCPanel : UserControl
+    public partial class MiniTCPanel : UserControl, ITCView
     {
-        #region Prop
         public string CurrentPath
         {
-            get {
+            get
+            {
                 return textBox1.Text;
             }
-            set {
+
+            set
+            {
                 textBox1.Text = value;
             }
         }
+
         public string[] Drives
         {
             set
             {
-               comboBox1.Items.AddRange(value);
+                comboBox1.Items.Clear();
+                comboBox1.Items.AddRange(value);
             }
         }
 
@@ -39,12 +43,15 @@ namespace lab_2_B
                     listView1.Items.Add(new ListViewItem(element.ToString()));
                 }
             }
-        } 
+        }
+        #region Prop
 
         #endregion
 
         #region Events
         public event Action SelectedDriveChanege;
+        public event Action LoadDrivesList;
+        public event Action LoadDirectoryElements;
         #endregion
 
         public MiniTCPanel()

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace lab_2_B.Properties
+namespace miniTCApp.Properties
 {
 
 

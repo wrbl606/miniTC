@@ -1,4 +1,4 @@
-﻿namespace lab_2_B
+﻿namespace miniTCApp
 {
     partial class Form1
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.miniTCPanel1 = new lab_2_B.MiniTCPanel();
+            this.miniTCPanel1 = new miniTCApp.MiniTCPanel();
             this.SuspendLayout();
             // 
             // miniTCPanel1

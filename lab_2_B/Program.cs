@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace lab_2_B
+namespace miniTCApp
 {
     static class Program
     {
