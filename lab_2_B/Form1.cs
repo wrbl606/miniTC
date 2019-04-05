@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using lab_2_B;
 
 namespace miniTCApp
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, ITCView
     {
         public Form1()
         {
@@ -26,6 +27,10 @@ namespace miniTCApp
             };
             miniTCPanel1.DirectoryElements = elements;
         }
+
+        public ITCPanelView LeftPanel => miniTCPanel1;
+
+        public ITCPanelView RightPanel => miniTCPanel2;
 
         private void MInTCPanel1_SelectedDriveChanege()
         {

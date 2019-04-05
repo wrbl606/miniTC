@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using lab_2_B;
 
 namespace miniTCApp
 {
-    public partial class MiniTCPanel : UserControl, ITCView
+    public partial class MiniTCPanel : UserControl, ITCPanelView
     {
         public string CurrentPath
         {

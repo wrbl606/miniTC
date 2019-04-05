@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lab_2_B;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,7 @@ namespace miniTCApp
 {
     public interface ITCView
     {
-        string CurrentPath { get; set; }
-        string[] Drives { set; }
-        event Action LoadDrivesList;
-        DirectoryElement[] DirectoryElements { set; }
-        event Action LoadDirectoryElements;
+        ITCPanelView LeftPanel { get; }
+        ITCPanelView RightPanel { get; }
     }
 }

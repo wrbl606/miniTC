@@ -9,6 +9,11 @@ namespace lab_2_B
 {
     class Model
     {
+        public string[] getDrives()
+        {
+            List<string> drives = new List<string>(Directory.GetLogicalDrives());
+            return drives.ToArray();
+        }
 
     }
 }
