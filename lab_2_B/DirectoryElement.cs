@@ -21,7 +21,7 @@ namespace miniTCApp
 
         public override string ToString()
         {
-            return $"{ ((Type == DirectoryElementType.DIRECTORY) ? "<DIR>" : "") } { Name }";
+            return $"{ ((Type == DirectoryElementType.DIRECTORY) ? "📁" : "▶️") } { Name }";
         }
     }
 }

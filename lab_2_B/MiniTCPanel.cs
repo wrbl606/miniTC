@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using lab_2_B;
+using miniTCNamespace;
 
 namespace miniTCApp
 {
@@ -39,9 +39,12 @@ namespace miniTCApp
         {
             set
             {
+                listView1.Items.Clear();
                 foreach (DirectoryElement element in value)
                 {
-                    listView1.Items.Add(new ListViewItem(element.ToString()));
+                    ListViewItem listViewItem = new ListViewItem();
+                    listViewItem.Text = element.ToString();
+                    listView1.Items.Add(listViewItem);
                 }
             }
         }
@@ -50,7 +53,7 @@ namespace miniTCApp
         #endregion
 
         #region Events
-        public event Action SelectedDriveChanege;
+        public event Action SelectedDriveChange;
         public event Action LoadDrivesList;
         public event Action LoadDirectoryElements;
         #endregion
@@ -60,6 +63,11 @@ namespace miniTCApp
             InitializeComponent();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) => SelectedDriveChanege?.Invoke();
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) => LoadDirectoryElements?.Invoke();
+
+        private void comboBox1_Click(object sender, EventArgs e)
+        {
+            LoadDrivesList?.Invoke();
+        }
     }
 }

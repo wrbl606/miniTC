@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using lab_2_B;
+using miniTCNamespace;
 
 namespace miniTCApp
 {
@@ -16,16 +16,6 @@ namespace miniTCApp
         public Form1()
         {
             InitializeComponent();
-            miniTCPanel1.CurrentPath = "c:\\";
-            miniTCPanel1.Drives = System.IO.Directory.GetLogicalDrives();
-            miniTCPanel1.SelectedDriveChanege += MInTCPanel1_SelectedDriveChanege;
-
-            DirectoryElement[] elements =
-            {
-                new DirectoryElement(DirectoryElementType.DIRECTORY, "folder"),
-                new DirectoryElement(DirectoryElementType.FILE, "niefolder"),
-            };
-            miniTCPanel1.DirectoryElements = elements;
         }
 
         public ITCPanelView LeftPanel => miniTCPanel1;

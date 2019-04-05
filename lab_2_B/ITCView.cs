@@ -1,4 +1,4 @@
-﻿using lab_2_B;
+﻿using miniTCNamespace;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using lab_2_B;
+using miniTCNamespace;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,12 @@ namespace miniTCApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Model model = new Model();
+            ITCView view = new Form1();
+            TCPresenter tcPresenter = new TCPresenter(view, model);
+
+            Application.Run((Form) view);
         }
     }
 }
