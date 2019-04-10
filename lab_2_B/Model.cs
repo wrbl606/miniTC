@@ -21,6 +21,10 @@ namespace miniTCNamespace
             List<DirectoryElement> elements = new List<DirectoryElement>();
             string[] paths = Directory.GetFileSystemEntries(path);
 
+            elements.Add(new DirectoryElement(
+                DirectoryElementType.DIRECTORY,
+                ".."
+            ));
             for (int i = 0; i < paths.Count(); i++)
             {
                 elements.Add(
@@ -32,6 +36,11 @@ namespace miniTCNamespace
             }
 
             return elements;
+        }
+
+        public string DirectoryAbove(string path)
+        {
+            return Directory.GetParent(path)?.FullName ?? path;
         }
     }
 }

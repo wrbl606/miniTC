@@ -17,11 +17,27 @@ namespace miniTCNamespace
 
             this.view.LoadDrivesList += View_LoadDrivesList;
             this.view.LoadDirectoryElements += View_LoadDirectoryElements;
+            this.view.SelectedDriveChanged += View_SelectedDriveChanged;
+            this.view.SubfolderChosen += View_SubfolderChosen;
+        }
+
+        private void View_SubfolderChosen(string obj)
+        {
+            if (obj == "..") {
+                view.CurrentPath = model.DirectoryAbove(view.CurrentPath);
+                return;
+            }
+            view.CurrentPath += $"{obj}\\";
+        }
+
+        private void View_SelectedDriveChanged()
+        {
+            view.CurrentPath = view.CurrentDrive;
         }
 
         private void View_LoadDirectoryElements()
         {
-            view.DirectoryElements = model.GetDirectoryElements("C:\\").ToArray();
+            view.DirectoryElements = model.GetDirectoryElements(view.CurrentPath).ToArray();
         }
 
         private void View_LoadDrivesList()

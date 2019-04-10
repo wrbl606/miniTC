@@ -26,6 +26,14 @@ namespace miniTCApp
             }
         }
 
+        public string CurrentDrive
+        {
+            get
+            {
+                return comboBox1.SelectedItem.ToString();
+            }
+        }
+
         public string[] Drives
         {
             set
@@ -53,9 +61,10 @@ namespace miniTCApp
         #endregion
 
         #region Events
-        public event Action SelectedDriveChange;
+        public event Action SelectedDriveChanged;
         public event Action LoadDrivesList;
         public event Action LoadDirectoryElements;
+        public event Action<string> SubfolderChosen;
         #endregion
 
         public MiniTCPanel()
@@ -63,11 +72,26 @@ namespace miniTCApp
             InitializeComponent();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) => LoadDirectoryElements?.Invoke();
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectedDriveChanged?.Invoke();
+            LoadDirectoryElements?.Invoke();
+        }
 
         private void comboBox1_Click(object sender, EventArgs e)
         {
             LoadDrivesList?.Invoke();
+        }
+
+        private void listView1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+
+        }
+
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            SubfolderChosen?.Invoke(e.Item.Text.Substring(3));
+            LoadDirectoryElements?.Invoke();
         }
     }
 }
