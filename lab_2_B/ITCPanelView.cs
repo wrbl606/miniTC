@@ -10,7 +10,7 @@ namespace miniTCNamespace
     public interface ITCPanelView
     {
         string CurrentPath { get; set; }
-        string CurrentDrive { get; }
+        string CurrentDrive { get; set; }
         string[] Drives { set; }
         event Action LoadDrivesList;
         DirectoryElement[] DirectoryElements { set; }

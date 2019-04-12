@@ -40,7 +40,13 @@ namespace miniTCNamespace
 
         public string DirectoryAbove(string path)
         {
-            return Directory.GetParent(path)?.FullName ?? path;
+            string parentPath = path;
+            if (path.Last() == '\\'&& path.Length > 3) parentPath = Directory.GetParent(parentPath)?.FullName;
+            return Directory.GetParent(parentPath)?.FullName ?? path;
         }
+
+        public bool IsDirectory(string path) => Directory.Exists(path);
+
+        public bool IsFile(string path) => File.Exists(path);
     }
 }

@@ -18,16 +18,35 @@ namespace miniTCNamespace
             this.view.LoadDrivesList += View_LoadDrivesList;
             this.view.LoadDirectoryElements += View_LoadDirectoryElements;
             this.view.SelectedDriveChanged += View_SelectedDriveChanged;
-            this.view.SubfolderChosen += View_SubfolderChosen;
+            this.view.SubfolderChosen += View_SubpathChosen;
+
+            Init();
         }
 
-        private void View_SubfolderChosen(string obj)
+        private void Init()
         {
-            if (obj == "..") {
+            string[] drives = model.GetDrives();
+            view.Drives = drives;
+            view.CurrentPath = drives[0];
+            view.CurrentDrive = drives[0];
+            View_LoadDirectoryElements();
+        }
+
+        private void View_SubpathChosen(string obj)
+        {
+            string newPath = view.CurrentPath;
+
+            if (obj == "..")
+            {
                 view.CurrentPath = model.DirectoryAbove(view.CurrentPath);
                 return;
             }
-            view.CurrentPath += $"{obj}\\";
+
+            if (model.IsFile(view.CurrentPath))
+                newPath = model.DirectoryAbove(view.CurrentPath);
+
+            newPath += $"{obj}{ (model.IsDirectory(newPath + obj) ? "\\" : "") }";
+            view.CurrentPath = newPath;
         }
 
         private void View_SelectedDriveChanged()
@@ -37,7 +56,8 @@ namespace miniTCNamespace
 
         private void View_LoadDirectoryElements()
         {
-            view.DirectoryElements = model.GetDirectoryElements(view.CurrentPath).ToArray();
+            if (model.IsDirectory(view.CurrentPath))
+                view.DirectoryElements = model.GetDirectoryElements(view.CurrentPath).ToArray();
         }
 
         private void View_LoadDrivesList()

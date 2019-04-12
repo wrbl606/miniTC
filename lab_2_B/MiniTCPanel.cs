@@ -32,6 +32,11 @@ namespace miniTCApp
             {
                 return comboBox1.SelectedItem.ToString();
             }
+
+            set
+            {
+                comboBox1.SelectedIndex = 0;
+            }
         }
 
         public string[] Drives

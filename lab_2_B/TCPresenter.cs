@@ -20,8 +20,8 @@ namespace lab_2_B
             this.model = model;
             leftPanelPresenter = new TCPanelPresenter(this.view.LeftPanel, model);
             rightPanelPresenter = new TCPanelPresenter(this.view.RightPanel, model);
-
-
         }
+
+        
     }
 }
