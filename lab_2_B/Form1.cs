@@ -22,9 +22,28 @@ namespace miniTCApp
 
         public ITCPanelView RightPanel => miniTCPanel2;
 
+        public event Action Copy;
+        public event Action Delete;
+        public event Action MoveFile;
+
         private void MInTCPanel1_SelectedDriveChanege()
         {
             MessageBox.Show("działa");
+        }
+
+        private void CopyButton_Click(object sender, EventArgs e)
+        {
+            Copy?.Invoke();
+        }
+
+        private void MoveButton_Click(object sender, EventArgs e)
+        {
+            MoveFile?.Invoke();
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            Delete?.Invoke();
         }
     }
 }

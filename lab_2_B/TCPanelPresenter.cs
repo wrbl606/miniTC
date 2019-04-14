@@ -10,6 +10,15 @@ namespace miniTCNamespace
     {
         ITCPanelView view;
         Model model;
+        public string CurrentPath { get
+            {
+                return view.CurrentPath;
+            }
+        }
+        public void ReloadDirectoryElements()
+        {
+            View_LoadDirectoryElements();
+        }
 
         public TCPanelPresenter(ITCPanelView view, Model model) {
             this.view = view;
@@ -38,12 +47,14 @@ namespace miniTCNamespace
 
             if (obj == "..")
             {
-                view.CurrentPath = model.DirectoryAbove(view.CurrentPath);
+                if (view.CurrentPath.Length <= 3) return;
+                view.CurrentPath = model.DirectoryAbove(view.CurrentPath) + "\\";
+                
                 return;
             }
 
             if (model.IsFile(view.CurrentPath))
-                newPath = model.DirectoryAbove(view.CurrentPath);
+                newPath = model.DirectoryAbove(view.CurrentPath) + "\\";
 
             newPath += $"{obj}{ (model.IsDirectory(newPath + obj) ? "\\" : "") }";
             view.CurrentPath = newPath;

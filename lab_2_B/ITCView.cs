@@ -11,5 +11,6 @@ namespace miniTCApp
     {
         ITCPanelView LeftPanel { get; }
         ITCPanelView RightPanel { get; }
+        event Action Copy, MoveFile, Delete;
     }
 }
